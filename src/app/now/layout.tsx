@@ -1,4 +1,4 @@
-import {ReactNode, Suspense} from "react"
+import {ReactNode} from "react"
 import Link from "next/link";
 
 export const dynamic = 'force-dynamic'
@@ -15,8 +15,6 @@ async function LoadData(props: { children: ReactNode }) {
 export default async function Layout(props: { children: ReactNode }) {
   return <>
     <div><Link href={`/`} className="text-blue-500">Home Page</Link></div>
-    <Suspense fallback={<h1>Loading... {Date.now()}</h1>}>
-      <LoadData>{props.children}</LoadData>
-    </Suspense>
+    <LoadData>{props.children}</LoadData>
   </>
 }
